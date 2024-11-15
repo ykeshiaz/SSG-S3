@@ -1,0 +1,73 @@
+on:
+  pull_request:
+    branches:
+      - "**"
+permissions:
+  pull-requests: write
+name: 🌱 Plan, Build 🧪
+jobs:
+  TF-Plan:
+    name: 🏗️ Plan Infra
+    runs-on: macos-latest  # Changed to macOS
+    steps:
+      - name: Check Out Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+          terraform_version: 1.9.2
+
+      - name: Initialize Terraform 👁️👁️
+        run: |
+          echo "Initializing Terraform..."
+          cd terraform
+          terraform init
+
+      - name: Generate Terraform Plan
+        run: |
+          echo "Running Terraform Plan..."
+          cd terraform
+          terraform plan -out=tfplan
+
+      - name: Show Terraform Plan Output
+        run: |
+          echo "Displaying Terraform Plan Output:"
+          terraform show tfplan
+
+  web-deploy:
+    name: 💫 Deploy
+    runs-on: macos-latest  # Changed to macOS
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    needs: ["TF-Plan"]
+    steps:
+      - name: Check Out Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: '16'  # Specify a Node.js version for consistency
+
+      - name: Install Dependencies
+        run: |
+          echo "Installing project dependencies..."
+          cd web
+          npm install
+
+      - name: Build the Web Application
+        run: |
+          echo "Building the project..."
+          cd web
+          npm run build
+
+      # Optional: Add S3 deployment if needed
+      # - name: 🚀 Upload Build Artifacts
+      #   uses: reggionick/s3-deploy@v4
+      #   with:
+      #     folder: "web/out"
+      #     bucket: ${{ secrets.S3_BUCKET }}
+      #     bucket-region: us-west-2
