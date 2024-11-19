@@ -46,7 +46,7 @@ data "aws_iam_policy_document" "s3_policy" {
   # Origin Access Controls
   statement {
     actions   = ["s3:GetObject", "s3:PutObject"]
-    resources = ["${module.s3_bucket.s3_bucket_arn}/*"]
+    resources = ["${module.s3-bucket.s3_bucket_arn}/*"]
     principals {
       type        = "Service"
       identifiers = ["cloudfront.amazonaws.com"]

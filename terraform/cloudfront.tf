@@ -10,7 +10,7 @@ module "cloudfront" {
   create_origin_access_control = true
   origin = {
     s3_oac = { # with origin access control settings (recommended)
-      domain_name              = module.s3_bucket.s3_bucket_bucket_regional_domain_name
+      domain_name              = module.s3-bucket.s3_bucket_bucket_regional_domain_name
       origin_access_control    = "s3_oac"
       origin_access_control_id = aws_cloudfront_origin_access_control.cloudfront_oac.id # external OAС resource
       origin_ssl_protocols     = ["TLSv1", "TLSv1.1", "TLSv1.2"]
