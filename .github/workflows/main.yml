@@ -54,8 +54,8 @@ jobs:
 
       - name: 🚀 Upload Package
         run: |
-          aws s3 sync ./web/out s3://${{ secrets.S3_BUCKET }}/ --region us-west-2
-          aws s3 sync ./web/out s3://${{ secrets.S3_BUCKET }}-failover/ --region us-west-2
+          aws s3 sync ./web/out s3://${{ secrets.S3_BUCKET }}/ --region us-east-1
+          aws s3 sync ./web/out s3://${{ secrets.S3_BUCKET }}-failover/ --region us-east-1
 
 
       # Uncomment the following step if you want to upload the package to S3
