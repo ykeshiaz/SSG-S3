@@ -49,7 +49,7 @@ jobs:
           npm install
       - name: 🔨 Build Project
         run: |
-          cd web
+          cd ssg-s3
           npm run build
 
       - name: 🚀 Upload Package

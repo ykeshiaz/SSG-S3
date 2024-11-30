@@ -1,4 +1,4 @@
-import { ImageResponse } from 'next/og'
+import {ImageResponse} from "@vercel/og";
 
 export function GET(request: Request) {
   let url = new URL(request.url)
