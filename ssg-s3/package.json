@@ -1,4 +1,5 @@
 {
+  "name": "ssg-s3",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -7,21 +8,25 @@
   },
   "dependencies": {
     "@tailwindcss/postcss": "4.0.0-alpha.13",
-    "@types/node": "20.11.17",
-    "@types/react": "18.2.55",
-    "@types/react-dom": "18.2.19",
+    "@types/node": "^20.11.17",
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7",
     "@vercel/analytics": "^1.1.3",
+    "@vercel/og": "^0.6.4",
     "@vercel/speed-insights": "^1.0.9",
     "geist": "1.2.2",
-    "next": "^15.0.3",
-    "next-mdx-remote": "^4.4.1",
-    "postcss": "^8.4.35",
-    "posts": "^0.0.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "next": "^13.5.7",
+    "next-mdx-remote": "^5.0.0",
+    "postcss": "^8.4.23",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "sugar-high": "^0.6.0",
     "swr": "^2.2.5",
     "tailwindcss": "4.0.0-alpha.13",
-    "typescript": "5.3.3"
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.0.0"
   }
 }
