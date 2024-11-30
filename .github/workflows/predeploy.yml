@@ -55,13 +55,13 @@ jobs:
       - name: Install Dependencies
         run: |
           echo "Installing project dependencies..."
-          cd web
+          cd ssg-s3
           npm install
 
       - name: Build the Web Application
         run: |
           echo "Building the project..."
-          cd web
+          cd ssg-s3
           npm run build
 
       # Optional: Add S3 deployment if needed
