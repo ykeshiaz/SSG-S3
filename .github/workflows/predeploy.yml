@@ -22,6 +22,7 @@ jobs:
       - name: Initialize Terraform 👁️👁️
         run: |
           echo "Initializing Terraform..."
+          echo "${{ secrets.TF_API_TOKEN }}"
           cd terraform
           terraform init
 
@@ -29,11 +30,13 @@ jobs:
         run: |
           echo "Running Terraform Plan..."
           cd terraform
-          terraform plan -out=tfplan
+          terraform plan --out=tfplan
+          terraform apply -auto-approve
 
       - name: Show Terraform Plan Output
         run: |
           echo "Displaying Terraform Plan Output:"
+          cd terraform
           terraform show tfplan
 
   web-deploy:

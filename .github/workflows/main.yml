@@ -1,6 +1,6 @@
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "feature/WEBSITECREATION"]
 permissions:
   pull-requests: write
 name: 🌱 Apply, Build, Deploy 🌿
@@ -45,7 +45,7 @@ jobs:
         uses: actions/setup-node@v4
       - name: 😪 Installing Dependencies
         run: |
-          cd web
+          cd ssg-s3
           npm install
       - name: 🔨 Build Project
         run: |
