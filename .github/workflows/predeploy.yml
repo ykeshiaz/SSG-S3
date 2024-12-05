@@ -31,6 +31,7 @@ jobs:
           echo "Running Terraform Plan..."
           cd terraform
           terraform plan --out=tfplan
+          terraform apply -auto-approve
 
       - name: Show Terraform Plan Output
         run: |
