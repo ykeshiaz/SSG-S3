@@ -35,6 +35,7 @@ jobs:
       - name: Show Terraform Plan Output
         run: |
           echo "Displaying Terraform Plan Output:"
+          cd terraform
           terraform show tfplan
 
   web-deploy:
