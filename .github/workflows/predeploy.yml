@@ -22,7 +22,7 @@ jobs:
       - name: Initialize Terraform 👁️👁️
         run: |
           echo "Initializing Terraform..."
-          echo ${{ secrets.TF_API_TOKEN }}
+          echo "${{ secrets.TF_API_TOKEN }}"
           cd terraform
           terraform init
 
